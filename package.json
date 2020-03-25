@@ -1,0 +1,19 @@
+{
+  "name": "comp4711_termproject",
+  "version": "1.0.0",
+  "description": "\"# COMP4711_TermProject\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MDandaya/COMP4711_TermProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MDandaya/COMP4711_TermProject/issues"
+  },
+  "homepage": "https://github.com/MDandaya/COMP4711_TermProject#readme"
+}
