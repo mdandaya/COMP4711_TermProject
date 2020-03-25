@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MDandaya/COMP4711_TermProject/issues"
   },
-  "homepage": "https://github.com/MDandaya/COMP4711_TermProject#readme"
+  "homepage": "https://github.com/MDandaya/COMP4711_TermProject#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
