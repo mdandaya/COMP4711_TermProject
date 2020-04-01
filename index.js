@@ -30,12 +30,15 @@ app.use(bodyParser.urlencoded({ extended: false })) // middleware
 // parse application/json
 app.use(bodyParser.json()) // middleware
 
+// TODO: Add routes here like this
 // let artistRoutes = require('./routes/artists');
 // let loginRoutes = require('./routes/login');
+// app.use(loginRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
+// TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
 //   let user = req.session.user;
 //   // user = null;
 //   console.log('index' + user);
@@ -43,10 +46,9 @@ app.get('/', function (req, res) {
 //     return res.render('login');
 //   }
 //   res.redirect(301, '/artists');
+    res.render('login');
 });
 
-app.use(artistRoutes);
-app.use(loginRoutes);
 
 app.listen(process.env.PORT || 4000, () => console.log('Server ready on environment variable port or 4000'))
 
