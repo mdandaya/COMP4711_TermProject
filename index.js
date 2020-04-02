@@ -24,6 +24,7 @@ app.engine(
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false })) // middleware
 
@@ -46,7 +47,7 @@ app.get('/', function (req, res) {
 //     return res.render('login');
 //   }
 //   res.redirect(301, '/artists');
-    res.render('login');
+    res.render('homepage');
 });
 
 

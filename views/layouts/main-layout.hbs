@@ -1,4 +1,33 @@
-main layout test
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KnowledgeBase</title>
+    <link href='/css/main-layout.css' rel='stylesheet' />
+    {{!-- <link href='/css/login.css' rel='stylesheet' /> --}}
+    {{!-- {{#if artistsCSS}}
+        <link href='/css/style.css' rel='stylesheet' />
+    {{/if}}
+    {{#if formsCSS}}
+        <link href='/css/forms.css' rel='stylesheet' />
+    {{/if}}
+    {{#if artistsJS}}
+        <script src='/js/script.js'></script>
+    {{/if}} --}}
+
+</head>
+
+<header class="main-header">
+    KB LOGO HERE
+    <input type='text' placeholder='Search'>
+    <nav class="main-header__nav">
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
 <body>
-    {{body}}
+    {{{ body }}}
 </body>
+
+</html>
