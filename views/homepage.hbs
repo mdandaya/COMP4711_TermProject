@@ -26,11 +26,12 @@
 </div>
 <div class="discussion-container">
 
-    <form class='discussion-form'>
+    <form class='discussion-form' action='/' method='post'>
         <h1>what's your question today?</h1>
         <input class="input-subject" name='subject' type="text" placeholder="subject">
         <input class="input-details" name='details' type="text" placeholder="explain in detail ....">
         <select class="input-topic" name='topic'>
+            <option value="" disabled selected>topic</option>
             <option>php</option>
             <option>nodejs</option>
             <option>sql</option>
@@ -39,7 +40,7 @@
         </select>
         <input type='submit' value="post to timeline">
     </form>
-        
+
     {{> discussions}}
 </div>
 
