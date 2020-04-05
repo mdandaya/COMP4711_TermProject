@@ -14,7 +14,7 @@ app.use(session({
 }));
 
 // app.use(loginRoute);
-app.use(discussionsRoute);
+//app.use(discussionsRoute);
 
 const expressHbs = require('express-handlebars');
 app.engine(
