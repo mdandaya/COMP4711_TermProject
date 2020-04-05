@@ -1,9 +1,10 @@
-<div class='profile-container'>
-    <img src="https://randomuser.me/api/portraits/med/men/1.jpg">
-    <h3>Man Manson</h3>
-    <span>man man guy guy who do thing thing</span>
+<div class="main-container">
 
-    <div>
+    <div class='profile-container'>
+        <img src="https://randomuser.me/api/portraits/med/men/1.jpg">
+        <h3>Man Manson</h3>
+        <p>man man guy guy who do thing thing</p>
+
         <table>
             <tr>
                 <th>Posts</th>
@@ -18,31 +19,31 @@
                 <th>0</th>
             </tr>
         </table>
+
+        <br>
+
+        Edit Profile
     </div>
+    <div class="discussion-container">
 
-    <br>
+        <form class='discussion-form' action='/' method='post'>
+            <h1>what's your question today?</h1>
+            <input class="input-subject" name='subject' type="text" placeholder="subject"> <br>
+            <textarea clas"input-details" name='details' rows="4" cols="50"
+                placeholder="explain in detail ...."></textarea> <br>
+            <select class="input-topic" name='topic'>
+                <option value="" disabled selected>topic</option>
+                <option>php</option>
+                <option>nodejs</option>
+                <option>sql</option>
+                <option>java</option>
+                <option>zend</option>
+            </select>
+            <input type='submit' value="post to timeline">
+        </form>
 
-    Edit Profile
-</div>
-<div class="discussion-container">
-
-    <form class='discussion-form' action='/' method='post'>
-        <h1>what's your question today?</h1>
-        <input class="input-subject" name='subject' type="text" placeholder="subject">
-        <input class="input-details" name='details' type="text" placeholder="explain in detail ....">
-        <select class="input-topic" name='topic'>
-            <option value="" disabled selected>topic</option>
-            <option>php</option>
-            <option>nodejs</option>
-            <option>sql</option>
-            <option>java</option>
-            <option>zend</option>
-        </select>
-        <input type='submit' value="post to timeline">
-    </form>
-
-    {{> discussions}}
-</div>
+        {{> discussions}}
+    </div>
 
 
 </div>
