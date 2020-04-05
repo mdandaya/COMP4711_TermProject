@@ -3,27 +3,26 @@ body {
 }
 
 .main-container {
-    background-color: #87ceeb;
+    /* background-color: #87ceeb; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 
-.main-container > * {
+.main-container>* {
     margin: 20px;
     padding: 20px;
     vertical-align: top;
-    min-width: 400px;
+    min-width: 250px;
 }
 
 .profile-container {
-    background-color: green;
-    flex: 1 1 400px;
+    /* background-color: green; */
+    flex: 1 1 250px;
     text-align: center;
 }
 
-.profile-container > h3 {
+.profile-container>h3 {
     color: black;
 }
 
@@ -31,21 +30,19 @@ body {
     color: darkgray;
 }
 
-.profile-container > img {
+.profile-container>img {
     width: 100px;
     border: solid white 3px;
     border-radius: 100%;
-
 }
 
-.profile-container > table {
+.profile-container>table {
     margin: auto;
     text-align: left;
 }
 
 .discussion-container {
-    background-color: pink;
-    flex: 1 1 600px;
-
+    /* background-color: pink; */
+    flex: 1 1 750px;
     color: darkgray;
 }
