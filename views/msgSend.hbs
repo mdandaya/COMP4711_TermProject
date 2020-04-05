@@ -1,0 +1,20 @@
+{{>navBar}}
+
+<div class="main-container">
+
+    <div class='profile-container'>
+        <img class="photo" src={{this.url}} alt="Photo">
+        <h3 class="name">{{this.name}}</h3>
+    </div>
+
+    <div class="discussion-container">
+        <form action='/msg/msgSend' method='post'>
+            <input type='text' id='subject' placeholder='subject' />
+            <input type='text' id='content' placeholder='message details...' />
+            <input type='submit' id='submit' value='Message' />
+        </form>
+    </div>
+
+</div>
+
+{{>footer}}
