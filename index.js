@@ -73,8 +73,24 @@ app.get('/', function (req, res) {
     res.redirect('/homepage');
 });
 
+// app.post('/register', (req,res) => {
+
+//   //alert("test");
+//   console.log("does it go here or ?");
+
+//   // // // lets assume that our app has 2 users
+//   // // let users = ['user1','user2'];
+//   // let username = req.body.username;
+//   // let password = req.body.password;
+//   // // You will likely need to connect to connect to DB
+//   // // Check if username/password is valid
+//   // if(users.includes(username) && password=='password') {
+//   //   req.session.username = username;  // now on every request, username is made available
+//   //   req.session.cookie.maxAge = 60000; // set the expiry of session, in milliseconds = 1 min
+//   //   res.redirect('/peoples');
+//   // } else {
+//   //   res.redirect('/');
+//   // }
+// });
 
 app.listen(process.env.PORT || 4000, () => console.log('Server ready on environment variable port or 4000'))
-
-
-
