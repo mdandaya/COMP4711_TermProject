@@ -23,7 +23,7 @@
     "express-session": "^1.17.0",
     "handlebars": "^4.4.2",
     "is-image-url": "^1.1.8",
-    "pg": "^8.0.0"
+    "pg": "^7.18.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
