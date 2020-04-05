@@ -2,9 +2,14 @@ let express = require('express')
 let app = express();
 let bodyParser = require('body-parser');
 let path = require('path');
-let db = require('./util/database');
+
+// Require routers
 let loginRoute = require('./routes/login-routes');
 let discussionsRoute = require('./routes/discussions-routes');
+let msgRoute = require('./routes/msg-routes');
+
+// Require custom utilities
+let db = require('./util/database');
 
 const session = require('express-session');
 app.use(session({
@@ -39,6 +44,7 @@ app.use(bodyParser.json()) // middleware
 // let artistRoutes = require('./routes/artists');
 // let loginRoutes = require('./routes/login');
 // app.use(loginRoutes);
+app.use('/msg', msgRoute);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
