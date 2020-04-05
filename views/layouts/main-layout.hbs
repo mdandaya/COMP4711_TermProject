@@ -5,26 +5,24 @@
     <meta charset="UTF-8">
     <title>KnowledgeBase</title>
     <link href='/css/main-layout.css' rel='stylesheet' />
+    
     {{!-- <link href='/css/login.css' rel='stylesheet' /> --}}
     {{#if homepageCSS}}
-        <link href='/css/homepage.css' rel='stylesheet' />
+    <link href='/css/homepage.css' rel='stylesheet'/>
+    <link href="/css/navbar.css" rel='stylesheet' />
+    
     {{/if}}
+
+    <!--#if profileCSS link navbar.css-->
+
     {{#if discussionsCSS}}
-        <link href='/css/discussions.css' rel='stylesheet' />
+    <link href='/css/discussions.css' rel='stylesheet' />
     {{/if}}
     {{!-- {{#if artistsJS}}
         <script src='/js/script.js'></script>
     {{/if}} --}}
 
 </head>
-
-<header class="main-header">
-    KB LOGO HERE
-    <input type='text' placeholder='Search'>
-    <nav class="main-header__nav">
-        <a href="/logout">Logout</a>
-    </nav>
-</header>
 
 <body>
     {{{ body }}}

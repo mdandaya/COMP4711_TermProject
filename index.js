@@ -3,6 +3,8 @@ let app = express();
 let bodyParser = require('body-parser');
 let path = require('path');
 let db = require('./util/database');
+let loginRoute = require('./routes/login-routes');
+let discussionsRoute = require('./routes/discussions-routes');
 
 const session = require('express-session');
 app.use(session({
@@ -11,6 +13,8 @@ app.use(session({
   saveUninitialized: true,
 }));
 
+// app.use(loginRoute);
+//app.use(discussionsRoute);
 
 const expressHbs = require('express-handlebars');
 app.engine(
