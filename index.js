@@ -57,7 +57,7 @@ app.get('/', function (req, res) {
 //     return res.render('login');
 //   }
 //   res.redirect(301, '/artists');
-    res.render('homepage', { homepageCSS: true });
+    res.render('homepage', { homepageCSS: true, discussionsCSS: true });
 });
 
 
