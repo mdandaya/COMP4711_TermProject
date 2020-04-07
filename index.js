@@ -50,15 +50,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Default path
 app.get('/', function (req, res) {
-// TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
-//   let user = req.session.user;
-//   // user = null;
-//   console.log('index' + user);
-//   if (!user) {
-//     return res.render('login');
-//   }
-//   res.redirect(301, '/artists');
-    res.render('homepage', { homepageCSS: true, discussionsCSS: true });
+
+  // TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
+  //   let user = req.session.user;
+  //   // user = null;
+  //   console.log('index' + user);
+  //   if (!user) {
+  //     return res.render('login');
+  //   }
+  //   res.redirect(301, '/artists');
+
+  //CHANGE THIS LINE TO TEST ROUTES / RENDERING
+    res.redirect('/homepage');
+    // OR
+    // res.render();
 });
 
 
