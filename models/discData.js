@@ -9,7 +9,7 @@ function searchDiscByTitle(query) {
 }
 
 function addDisc(data) {
-    let sql = "Insert into discussions (UserID, Title, Body, Topic) values ('" + data.userID + "','" + data.title + "','" + data.body +"')";
+    let sql = "Insert into discussions (UserID, Title, Body, Topic) values ('" + data.userID + "','" + data.title + "','" + data.body + "','" + data.topic +"')";
     return db.query(sql);//how to pass user id(fk)?
 }
 
