@@ -1,14 +1,29 @@
 let express = require('express')
 let app = express();
-let bodyParser = require('body-parser');
 let path = require('path');
 
-// Require routers
-let loginRoute = require('./routes/login-routes');
-let discussionsRoute = require('./routes/discussions-routes');
-let msgRoute = require('./routes/msg-routes');
+// Body parser
+let bodyParser = require('body-parser');
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false })) // middleware
+// parse application/json
+app.use(bodyParser.json()) // middleware
 
-// Require custom utilities
+// Routing
+let loginRoutes = require('./routes/login-routes');
+let discussionsRoutes = require('./routes/discussions-routes');
+let msgRoutes = require('./routes/msg-routes');
+let homepageRoutes = require('./routes/homepage-routes');
+// TODO: Add routes here like this
+// let artistRoutes = require('./routes/artists');
+// let loginRoutes = require('./routes/login');
+// app.use(loginRoutes);
+app.use('/msg', msgRoutes);
+app.use(homepageRoutes)
+// app.use(loginRoute);
+//app.use(discussionsRoute);
+
+// Database
 let db = require('./util/database');
 
 const session = require('express-session');
@@ -18,9 +33,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-// app.use(loginRoute);
-//app.use(discussionsRoute);
-
+// Handlebars for view
 const expressHbs = require('express-handlebars');
 app.engine(
   'hbs',
@@ -33,21 +46,9 @@ app.engine(
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false })) // middleware
-
-// parse application/json
-app.use(bodyParser.json()) // middleware
-
-// TODO: Add routes here like this
-// let artistRoutes = require('./routes/artists');
-// let loginRoutes = require('./routes/login');
-// app.use(loginRoutes);
-app.use('/msg', msgRoute);
-
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Default path
 app.get('/', function (req, res) {
 // TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
 //   let user = req.session.user;
