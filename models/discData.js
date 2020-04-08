@@ -1,7 +1,7 @@
 let db = require('../util/database');
 
-function getAllDiscussions() {
-    return db.query('Select * from discussions');
+function getAllDiscussions(userid) {
+    return db.query('Select * from discussions where userid='+userid);
 }
 
 function getOneDiscussion(discId){
