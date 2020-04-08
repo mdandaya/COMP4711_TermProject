@@ -15,12 +15,16 @@ let loginRoutes = require('./routes/login-routes');
 let discussionsRoutes = require('./routes/discussions-routes');
 let msgRoutes = require('./routes/msg-routes');
 let homepageRoutes = require('./routes/homepage-routes');
+let profileRoutes = require('./routes/profile-routes');
 // TODO: Add routes here like this
 // let artistRoutes = require('./routes/artists');
 // let loginRoutes = require('./routes/login');
 // app.use(loginRoutes);
 app.use('/msg', msgRoutes);
-app.use(homepageRoutes)
+app.use(
+  homepageRoutes, 
+  profileRoutes
+);
 // app.use(loginRoute);
 //app.use(discussionsRoute);
 

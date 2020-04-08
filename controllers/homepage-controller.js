@@ -1,5 +1,9 @@
 let discussionModel = require('../models/discData');
 
+exports.getHomepage = async (req, res, next) => {
+    res.render('homepage', { homepageCSS: true, discussionsCSS: true });
+}
+
 exports.postToTimeLine = async (req, res, next) => {
     
     // Hardcoded Test Post
