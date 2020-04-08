@@ -7,7 +7,8 @@
     width: 410px;
     height: 95px;
     margin: 0 auto;
-    margin-bottom: 100px;
+    margin-bottom: 120px;
+    margin-top: 35px;
     background-color: white;
 }
 
@@ -22,6 +23,7 @@
 .title {
     display: inline;
     margin-left: 15px;
+    font-size: 16.5px;
 }
 
 .topic {
@@ -29,6 +31,7 @@
     float: right;
     border: 3px solid lightblue;
     font-size: 12px;
+    text-align: center;
 }
 
 .body {

@@ -24,3 +24,4 @@ exports.postToTimeLine = async (req, res, next) => {
     await discussionModel.addDisc(disc);
     res.redirect(301, '/');
 }
+

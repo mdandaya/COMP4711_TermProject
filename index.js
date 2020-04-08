@@ -2,6 +2,7 @@ let express = require('express')
 let app = express();
 let path = require('path');
 let discModel = require('./models/discData');
+let discController = require('./controllers/discussion-controller');
 
 // Body parser
 let bodyParser = require('body-parser');
@@ -55,7 +56,10 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+// app.use(function(req, res, next) {
+//   res.setHeader("Content-Security-Policy", "default-src 'self'");
+//   return next();
+// });
 // Default path
 app.get('/', function (req, res) {
 // TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
@@ -69,9 +73,23 @@ app.get('/', function (req, res) {
 
 //TODO: get user id and pass it
 
+<<<<<<< HEAD
   // let discussions = discModel.getAllDiscussions(userid);
     // this should be implemented in homepage controller render 
     // res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
+=======
+//fetch test data==================
+  let data = discModel.getAllDiscussions(7);
+  //let numberOfReplies = discController.getNumOfReplies(); TODO: number of reply UNDEFINED
+  data.then(data => {
+    console.log(data.rows.length, "---data");
+    res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows, numberOfReplies: data.rows.length});
+    
+}).catch(err => console.log(err));
+//=================================
+
+});
+>>>>>>> add reply view, have to fix
 
     //res.redirect('/homepage');
     //res.render('homepage', { homepageCSS: true });
