@@ -1,6 +1,7 @@
 let express = require('express')
 let app = express();
 let path = require('path');
+let discModel = require('./models/discData');
 
 // Body parser
 let bodyParser = require('body-parser');
@@ -54,20 +55,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Default path
 app.get('/', function (req, res) {
+// TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
+//   let user = req.session.user;
+//   // user = null;
+//   console.log('index' + user);
+//   if (!user) {
+//     return res.render('login');
+//   }
+//   res.redirect(301, '/artists');
 
-  // TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
-  //   let user = req.session.user;
-  //   // user = null;
-  //   console.log('index' + user);
-  //   if (!user) {
-  //     return res.render('login');
-  //   }
-  //   res.redirect(301, '/artists');
+//TODO: get user id and pass it
 
-  //CHANGE THIS LINE TO TEST ROUTES / RENDERING COMMANDS
-  res.redirect('/homepage');
-  // OR
-  // res.render();
+  // let discussions = discModel.getAllDiscussions(userid);
+    res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
 });
 
 

@@ -1,10 +1,10 @@
 const express = require('express');
-// const loginController = require('../controllers/loginController');
 const router = express.Router();
+const discController = require('../controllers/discussion-controller');
 
-// router.get('/', artistController.getAllArtist);
+router.get('/discussions/replies/:discussionId', discController.getAllreplies);
 
-
+//get one discussion => for fetching replies
 
 
 
