@@ -1,6 +1,7 @@
 let express = require('express')
 let app = express();
 let path = require('path');
+let discModel = require('./models/discData');
 
 // Body parser
 let bodyParser = require('body-parser');
@@ -58,7 +59,11 @@ app.get('/', function (req, res) {
 //     return res.render('login');
 //   }
 //   res.redirect(301, '/artists');
-    res.render('homepage', { homepageCSS: true, discussionsCSS: true });
+
+//TODO: get user id and pass it
+
+  // let discussions = discModel.getAllDiscussions(userid);
+    res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
 });
 
 

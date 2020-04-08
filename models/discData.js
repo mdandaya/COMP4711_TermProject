@@ -1,7 +1,11 @@
 let db = require('../util/database');
 
-function getAllDiscussions() {
-    return db.query('Select * from discussions');
+function getAllDiscussions(userid) {
+    return db.query('Select * from discussions where userid='+userid);
+}
+
+function getOneDiscussion(discId){
+    return db.query('Select * from discussions where id='+discId);
 }
 
 function searchDiscByTitle(query) {
@@ -14,11 +18,18 @@ function addDisc(data) {
 }
 
 
+//--------get replies
+function getAllReplies(userId,discId) { //userid: different users for replies. disc id: this particular discussion
+    return db.query('Select * from discussionreply where userid = '+userId+' and discussionid = '+discId);
+}
 
 
 module.exports = {
     getAllDiscussions: getAllDiscussions,
     searchByTitle: searchDiscByTitle,
-    addDisc: addDisc
+    addDisc: addDisc,
+    getAllReplies: getAllReplies,
+    getOneDiscussion: getOneDiscussion,
+  
 
 }
