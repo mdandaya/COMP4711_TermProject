@@ -67,7 +67,10 @@ app.get('/', function (req, res) {
 //TODO: get user id and pass it
 
   // let discussions = discModel.getAllDiscussions(userid);
-    res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
+    // this should be implemented in homepage controller render 
+    // res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
+
+    res.redirect('/homepage');
 });
 
 
