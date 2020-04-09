@@ -2,7 +2,7 @@ let model = require('../models/msg-model');
 var email = require('../util/email');
 
 exports.msgNew = function(req,res,next) {
-    res.render('msgSend', { msgCSS: true, receiverID: req.body.receiverID });
+    res.render('msgSend', { msgCSS: true, receiverID: req.query.receiverID });
 }
 
 exports.msgSend = async function(req,res,next) {
@@ -21,8 +21,8 @@ exports.msgSend = async function(req,res,next) {
         if (check.rowCount == 0) {
             await model.createConversation(user1, user2, subject);
             check = await model.checkConversation(user1, user2, subject);            
-            let emailInfo = await model.emailInfo(user1, user2);
-            console.log(emailInfo);
+            let emailInfo = await model.getEmailInfo(check.rows[0].id);
+            console.log(emailInfo.rows[0].email, emailInfo.rows[0].firstname + " " + emailInfo.rows[0].lastname);
             email.sendEmail('jesskim2613@gmail.com', 'subject');
         }
         await model.createMessage(check.rows[0].id, user1, content);
