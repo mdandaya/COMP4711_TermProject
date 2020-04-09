@@ -63,3 +63,33 @@
 .reply-list{
     margin-left: 150px;
 }
+
+.box{
+    width: 410px;
+    height: 120px;
+    margin: 0 auto;
+    display: block;
+   
+
+}
+
+.cont{
+    background-color: rgb(218, 237, 253);
+    height: 90px;
+    padding: 10px;
+    text-indent: 10px;
+    word-wrap: break-word;
+}
+
+.btn{
+    float: right;
+    margin: 10px;
+    margin-right: 50px;
+    background-color: #38a1f3;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    border: none;
+    height: 30px;
+}

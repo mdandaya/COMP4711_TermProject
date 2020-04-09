@@ -9,4 +9,10 @@
         </div>
     </div>
     {{/each}}
+    <div class= "box">
+    <form action="/new-reply/{{getDiscId}}" method="post">
+        <input class="cont" type="text" name="newReply" placeholder="add your reply....." required />
+        <input type="submit" class='btn' value="Comment"/>
+    </form>
+    </div>
 </div>

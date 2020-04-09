@@ -6,7 +6,6 @@ exports.searchKeyword = (req, res) => {
     let toFind = searchModel.searchByTitle(query);
     toFind.then(data => {
         res.render('search-result', {   helpers: {
-            numberOfReplies: function () { return 999; },
             dateTrim: function (date) {
                 return date.toString().slice(4, 15);
             },
