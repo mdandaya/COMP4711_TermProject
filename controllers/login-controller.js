@@ -1,6 +1,6 @@
 
 const profileModel = require('../models/profile');
-
+const discModel = require('../models/discData');
 // exports.getAllPeople = (req,res,next) => {
 //    let Peoples = peopleModel.getall();
 //    let name = req.session.username;
@@ -14,6 +14,7 @@ const profileModel = require('../models/profile');
 //from POST /register.  Create user, login, set session id
 exports.register = (req, res) => {
     const user = req.body;
+    
 
     if(req.body.password === req.body.confirm_pass) {
         profileModel.createUser(user).then((data) => {
@@ -22,6 +23,10 @@ exports.register = (req, res) => {
                     req.session.userID = data.rows[0].id;
                     req.session.firstname = data.rows[0].firstname;
                     req.session.lastName = data.rows[0].lastname;
+                    //added for getting number of total discussion for this user for the pagination.
+                    
+                   
+
                     res.redirect('/homepage');
                 } else {
                     req.session.destroy();
@@ -46,6 +51,9 @@ exports.login = (req, res, next) => {
             req.session.userID = data.rows[0].id;
             req.session.firstname = data.rows[0].firstname;
             req.session.lastName = data.rows[0].lastname;
+
+          
+
             res.redirect('/homepage');
         } else {
             req.session.destroy();

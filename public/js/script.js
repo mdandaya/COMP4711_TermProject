@@ -1,14 +1,29 @@
 
 
+let currentpage = 0;
 
-function hell(){
-    console.log("im here");
+function previouspage(data) {
+    console.log("data--",data);
+    if (currentpage > 0) {
+        currentpage--;
+    }
+    console.log(currentpage);
+    let newpage = "/?page=" + currentpage;
+
+    // window.location.href = newpage;
 }
 
-function previouspage(){
-    console.log("hi");
+function nextpage(data) {
+    console.log("data--",data);
+
+    currentpage++;
+    console.log(currentpage);
+    let newpage = "/?page=" + currentpage;
+
+    // window.location.href = newpage
 }
 
-function nextpage(){
-
+function goProfile(user){
+    let newpage = "/profile/"+user;
+    window.location.href=newpage;
 }
