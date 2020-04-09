@@ -1,18 +1,22 @@
 let discModel = require('../models/discData');
+let profileModel = require('../models/profile');
 
 exports.getHomepage = async (req, res, next) => {
 
     let userId = req.session.userID;
     let data = discModel.getAllDiscussions(userId);
+    let userRow = await profileModel.getUserData(userId);
+    let user = userRow.rows[0];
+    console.log(user);
 
-    //let numberOfReplies = discController.getNumOfReplies(); TODO: number of reply UNDEFINED
+
+    
     data.then(data => {
         let paginationArr = helperPagination(data.rows, 5);
 
         let numberOfPages = paginationArr.length;
         res.render('homepage', {
             helpers: {
-                numberOfReplies: function () { return 999; },
                 dateTrim: function (date) {
                     return date.toString().slice(4, 15);
                 },
@@ -20,7 +24,9 @@ exports.getHomepage = async (req, res, next) => {
                 decrementPage: function (page) { return ++page; },
                 isDiscussion: function () { return true; }
             },
-            homepageCSS: true, discussions: paginationArr[0]         //TODO:fix this
+
+            homepageCSS: true, discussions: data.rows       //TODO:fix this
+
         });
 
     }).catch(err => console.log(err));
@@ -45,14 +51,14 @@ exports.postToTimeLine = async (req, res, next) => {
     // }
 
     let disc = {
-        userID: 2,
+        userID: req.session.userID,
         title: req.body.subject,
         body: req.body.details,
         topic: req.body.topic
     }
 
-    await discussionModel.addDisc(disc);
-    res.redirect(301, '/');
+    await discModel.addDisc(disc);
+    res.redirect(301, '/homepage');
 }
 
 function helperPagination(arr, size) {
