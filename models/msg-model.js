@@ -5,28 +5,37 @@ function checkConversation(user1, user2, subject) {
     return db.query(sql, [user1, user2, subject]);
 }
 
-async function createConversation(user1, user2, subject, message) {
+function createConversation(user1, user2, subject) {
     let sql = 'INSERT INTO conversation (user1, user2, subject) VALUES ($1, $2, $3)';
-    await db.query(sql, [user1, user2, subject]);
-    let id = checkConversation(user1, user2, subject);
-    createMessage(id, message); 
+    db.query(sql, [user1, user2, subject]);
 }
 
-function createMessage(id, content) {
-    let sql = 'INSERT INTO message (convid, content, timestamp) values ($1, $2, current_timestamp)';
-    db.query(sql, [id, content]);
+function createMessage(id, senderid, content) {
+    let sql = 'INSERT INTO message (convid, senderid, content, timestamp) \
+    values ($1, $2, $3, current_timestamp)';
+    db.query(sql, [id, senderid, content]);
 }
 
-function conversationList() {
-   return db.query('Select * from artists');
+function conversationList(myID) {
+    let sql = 'SELECT c.id, c.subject, \
+    u1.firstname as u1first, u1.lastname as u1last, u1.url as u1url,\
+    u2.firstname as u2first, u2.lastname as u2last, u2.url as u2url \
+    FROM conversation c \
+    JOIN users u1 ON c.user1 = u1.id \
+    JOIN users u2 ON c.user2 = u2.id \
+    WHERE user1 = $1 OR user2 = $1';
+    return db.query(sql, [myID]);
 }
 
-function messageList() {
-    return db.query('Select * from artists');
+function msgList(convID) {
+    let sql = 'SELECT * FROM message WHERE convid = $1';
+    return db.query(sql, [convID]);
 }
 
 module.exports = {
    checkConversation : checkConversation,
    createConversation : createConversation,
-   createMessage : createMessage
+   createMessage : createMessage,
+   conversationList : conversationList,
+   msgList : msgList
 }

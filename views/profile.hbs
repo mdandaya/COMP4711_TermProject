@@ -8,8 +8,9 @@
             <p>{{profile.country}}</p>
         </div>
         <div class="profile-buttons">
-            <form action="/" method="get">
+            <form action="/msg/msgnew" method="get">
                 <input type="submit" value="message">
+                <input type='hidden' name='receiverID' value={{profile.id}}>
             </form>
 
             <span>{{profile.likes}} Likes

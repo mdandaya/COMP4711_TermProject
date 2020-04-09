@@ -1,23 +1,30 @@
-{{>navBar}}
-
 <div class="main-container">
 
     <div class='profile-container'>
         <div id='convList-container'>
-            <p> hello conv list </p>
+            {{#each conversations}}
+                <div class="convCard" id={{this.convid}}>
+                    <img src={{this.url}} alt='Missing Image'/>
+                    <span>
+                        <p> {{this.firstname}} {{this.lastname}} </p>
+                        <p> {{this.subject}} </p>                                                            
+                    </span>                    
+                </div>
+            {{/each}}
         </div>
     </div>
 
     <div class="discussion-container">
-         <div id="msgList-container">
-            <p> hello msg list </p>
-        </div>
-        <div id="msgContent-container">
-            <p> hello msg content </p>
-        </div>
-        <div id="msgSend-container">
-            <p> hello msg send </p>
-        </div>
+        
+        <form action='/msg/msgSend' method='post'>
+            <div id="msgList-container">
+                {{> msgs }}
+            </div>
+            <textarea name='content' placeholder='message details...'></textarea>
+            <input type='hidden' name='receiverID' value={{receiverID}} />
+            <button type='submit'> Test </button>
+        </form>                        
+
     </div>
 
 </div>
