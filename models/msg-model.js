@@ -17,7 +17,7 @@ function createMessage(id, senderid, content) {
 }
 
 function conversationList(myID) {
-    let sql = 'SELECT c.subject, u1.firstname as u1first, u1.lastname as u1last, \
+    let sql = 'SELECT c.id, c.subject, u1.firstname as u1first, u1.lastname as u1last, \
     u2.firstname as u2first, u2.lastname as u2last \
     FROM conversation c \
     JOIN users u1 ON c.user1 = u1.id \
@@ -26,9 +26,9 @@ function conversationList(myID) {
     return db.query(sql, [myID]);
 }
 
-function messageList(convID) {
+function msgList(convID) {
     let sql = 'SELECT * FROM message WHERE convid = $1';
-    return db.query(sql, convID);
+    return db.query(sql, [convID]);
 }
 
 module.exports = {
@@ -36,5 +36,5 @@ module.exports = {
    createConversation : createConversation,
    createMessage : createMessage,
    conversationList : conversationList,
-   messageList : messageList
+   msgList : msgList
 }

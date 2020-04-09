@@ -5,7 +5,7 @@
     <div class='profile-container'>
         <div id='convList-container'>
             {{#each conversations}}
-                <div class="card">
+                <div class="convCard" id={{this.convid}}>
                     <p> {{this.subject}} </p>
                     <p> {{this.firstname}} </p>
                     <p> {{this.lastname}} </p>

@@ -33,21 +33,21 @@ exports.msgSend = async function(req,res,next) {
 
 exports.convList = async function(req,res,next) {
     var conversations = await model.conversationList(req.session.userID);
-    console.log(conversations.rows);
+    var myConversations = [];
 
-    var tempArray = [];
-
-    conversations.rows.forEach( function (row) {
+    conversations.rows.forEach(function (row) {
         if (req.session.firstname == row.u1first && req.session.lastname == row.u1last) {
-            tempArray.push({subject: row.subject, firstname: row.u1first, lastname: row.u1last});
+            myConversations.push({convid: row.id, subject: row.subject, firstname: row.u1first, lastname: row.u1last});
         } else {
-            tempArray.push({subject: row.subject, firstname: row.u2first, lastname: row.u2last});
+            myConversations.push({convid: row.id, subject: row.subject, firstname: row.u2first, lastname: row.u2last});
         }
     });
 
-    res.render('msgList', { msgCSS: true, conversations: tempArray });
+    res.render('msgList', { msgCSS: true, conversations: myConversations });
 }
 
-exports.msgList = function(req,res,next) {
-        
+exports.msgList = async function(req,res,next) {
+    var msgs = await model.msgList(req.body.convid);
+    console.log(msgs.rows);
+    return msgs.rows;
 }
