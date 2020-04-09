@@ -1,20 +1,22 @@
 let discData = require('../models/discData');
 
 
-exports.getAllreplies = async (req, res) => {//TODO:is this okay?
+exports.getAllreplies = async (req, res) => {//TODO:
     let discussId = req.params.discussionId;
     let userId = req.params.userId;
     try {
-        let allreplies = await discData.getAllReplies(userId, discussId);
-        console.log(discussId, "discuss id");
         let getOneDiscussion = await discData.getOneDiscussion(discussId);
-        console.log(allreplies.rows, "Replies--");
+        let allreplies = await discData.getAllReplies(userId, discussId);
+
+
         res.render('disc-replies', {
             helpers: {
-                numberOfReplies: function () { return 999; },
                 dateTrim: function (date) {
                     return date.toString().slice(4, 15);
                 },
+                getDiscId: function () {
+                    return discussId;
+                }
                 // isDiscussion: function () { return false; }
             }, discussionsCSS: true, replies: allreplies.rows, discussions: getOneDiscussion.rows, replyView: true
         });
@@ -22,20 +24,23 @@ exports.getAllreplies = async (req, res) => {//TODO:is this okay?
         console.log(err);
     }
 
-    // allreplies.then(data => {
-
-
-    // }).catch(err => console.log(err));
 };
 
-exports.getNumOfReplies = (req, res) => {
-    let num = discData.getAllReplies(req.params.discussionId);
-    allreplies.then(data => {
-        res.send(data.length);
-    }).catch(err => console.log(err));
-}
 
 
+exports.postNewReply = async (req, res) => {
+    let userId = req.session.userID;
+    let discId = req.params.discussionId;
+    let content = req.body.newReply;
+  
+    try {
+      
+        let success = await discData.addReply(userId, discId, content);
+        console.log(success);
+        res.redirect(301, '/discussions/replies/' + userId + '/' + discId);
 
-
+    } catch (err) {
+        console.log(err, "whoa");
+    }
+};
 

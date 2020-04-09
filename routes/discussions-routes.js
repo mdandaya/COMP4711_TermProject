@@ -4,7 +4,8 @@ const discController = require('../controllers/discussion-controller');
 
 router.get('/discussions/replies/:userId/:discussionId', discController.getAllreplies);
 
-//get one discussion => for fetching replies
+router.post('/new-reply/:discussionId', discController.postNewReply);
+
 
 
 

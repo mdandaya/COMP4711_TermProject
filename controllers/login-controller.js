@@ -14,6 +14,7 @@ const profileModel = require('../models/profile');
 //from POST /register.  Create user, login, set session id
 exports.register = (req, res) => {
     const user = req.body;
+
     if(req.body.password === req.body.confirm_pass) {
         profileModel.createUser(user).then((data) => {
             profileModel.login(user).then((data) => {
@@ -49,10 +50,18 @@ exports.login = (req, res, next) => {
         } else {
             req.session.destroy();
             console.log("ERROR");
-            res.render('login', {layout: 'signUp', err: 'Wrong password or email'})
+            res.render('login', { layout: 'signUp', err: 'Wrong password or email' })
         }
     })
-    .catch((err) => {
-        console.log(err)
-    })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+exports.logout = (req, res) => {
+    req.session.destroy(err => {
+        if (err) return console.log(err);
+    });
+    req.session = null;
+    res.redirect(301, '/');
 }
