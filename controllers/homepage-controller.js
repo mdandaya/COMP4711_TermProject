@@ -13,12 +13,13 @@ exports.getHomepage = async (req, res, next) => {
     let userRow = await profileModel.getUserData(userId);
     let user = userRow.rows[0];
     console.log(user);
-
+  
     let currentPage = req.params.page > 0 ? req.params.page : 0;
     let newarr = [];
     newarr.push(currentPage);
     newarr.push(numDisc.rows);
     console.log("newarr====", newarr);
+  
     data.then(data => {
         let paginationArr = helperPagination(data.rows, 5);
 
@@ -43,6 +44,22 @@ exports.getHomepage = async (req, res, next) => {
 
 
 
+}
+
+exports.getEditProfile = async (req, res, next) => {
+    let userId = req.session.userID;
+    let userRow = await profileModel.getUserData(userId);
+    let user = userRow.rows[0];
+    console.log(user)
+    res.render('editprofile', { user: user });
+}
+
+exports.postEditProfile = async (req, res, next) => {
+    console.log("----------------------");
+    console.log(req.body);
+    let newInfo = req.body;
+    await profileModel.updateUser(req.session.userID, newInfo.fname, newInfo.lname, newInfo.email, newInfo.about, newInfo.imageurl);
+    res.redirect('/homepage');
 }
 
 exports.getHomepageNext = async (req, res, next) => {

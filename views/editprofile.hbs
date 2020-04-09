@@ -1,0 +1,40 @@
+<div id='homePage'>
+
+    <div class="row">
+        <div class="col-8">
+            <p class="title-font"><b>Edit your profile</b></p>
+
+            <br>
+
+            <form action='/homepage/editprofile' method="POST">
+                <div class="form-row form-inline">
+                    First Name:
+                    <input class="form-control" type="text" name="fname" value="{{user.firstname}}" required=""
+                        size="10">
+                    <br>
+                    Last Name:
+                    <input class="form-control" type="text" name="lname" value="{{user.lastname}}" required=""
+                        size="10">
+                    <br>
+                    Email:<br>
+                    <input class="form-control" type="text" name="email" value="{{user.email}}" required="">
+                    <br>
+                    About:<br>
+                    <textarea clas"input-details" name='about' rows="4" cols="50">{{user.about}}</textarea>
+                    <br>
+                    Image URL:<br>
+                    <input class="form-control" type="text" name="imageurl" value="{{user.url}}" required="">
+                    <br>
+                </div>
+
+                {{!-- <input class="form-control" type="password" name="password" value="Password" required=""><br>
+                <input class="form-control" type="password" name="confirm_pass" placeholder="Confirm Password" required=""><br> --}}
+                <br>
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{{!-- {{>footer}} --}}
