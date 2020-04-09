@@ -3,6 +3,9 @@ let profileModel = require('../models/profile');
 
 exports.getHomepage = async (req, res, next) => {
 
+    if (!req.session.userID) {
+        return res.redirect('/');
+    }
     let userId = req.session.userID;
     let discSize = req.session.numDiscussions;
     let numDisc = await discModel.getNumDiscussion(userId);
@@ -39,12 +42,12 @@ exports.getHomepage = async (req, res, next) => {
         });
 
     }).catch(err => console.log(err));
-
-
-
 }
 
 exports.getEditProfile = async (req, res, next) => {
+    if (!req.session.userID) {
+        return res.redirect('/');
+    }
     let userId = req.session.userID;
     let userRow = await profileModel.getUserData(userId);
     let user = userRow.rows[0];
