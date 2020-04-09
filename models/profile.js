@@ -26,8 +26,19 @@ function UserAuthAndRedirect(data) {
     return db.query(sql);
 }
 
+function getUserData(userId) {
+    let sql = "SELECT users.id, firstname, lastname, url, about, dob, country, " 
+            + "(select count(userid) from discussions where userid = " + userId + ") as posts, "
+            + "(select count(user2) from conversation where user2 = " + userId + ") as messages, "
+            + "likes "
+            + "FROM users "
+            + "WHERE users.id = " + userId;
+    return db.query(sql);
+}
+
 module.exports = {
     createUser : addUser,
     login : UserAuthAndRedirect,
-    checkIfUserExists : checkForUserEmail
+    checkIfUserExists : checkForUserEmail,
+    getUserData: getUserData
 }
