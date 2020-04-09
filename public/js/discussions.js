@@ -1,5 +1,5 @@
-function countReplies(discussionId){
-    //do something with db and get count and return int.
-    //return int;
-
+function trimDate(fulldate){
+    console.log(fulldate);
+    let trimmed = fulldate.slice(4, 15);
+    return trimmed;
 }

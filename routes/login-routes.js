@@ -11,4 +11,6 @@ router.post('/register', loginController.register);
 
 router.get('/homepage', homepageController.getHomepage);
 
+router.get('/homepage/next', homepageController.getHomepageNext);
+
 module.exports = router;

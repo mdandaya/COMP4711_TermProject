@@ -37,9 +37,13 @@ exports.register = (req, res) => {
 
 //from POST /register.  Create user, login, set session id
 exports.login = (req, res, next) => {
+    console.log("TEST");
     profileModel.login(req.body).then((data) => {
-        if (data.rows[0]) {
+        if (data.rows[0] && data.rows[0].id && data.rows[0].firstname && data.rows[0].lastname) {
             req.session.userID = data.rows[0].id;
+            req.session.firstname = data.rows[0].firstname;
+            req.session.lastName = data.rows[0].lastname;
+            console.log(req.session);
             res.redirect('/homepage');
         } else {
             console.log("ERROR");

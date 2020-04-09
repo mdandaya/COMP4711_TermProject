@@ -1,4 +1,3 @@
-
 <div class="main-container">
 
     <div class='profile-container'>
@@ -28,16 +27,18 @@
 
         Edit Profile
     </div>
-    
+
     <div class="discussion-container">
 
         <form class='discussion-form' action='/homepage/post' method='post'>
             <h1>what's your question today?</h1>
-            <input class="input-subject" name='subject' type="text" placeholder="subject"> <br>
+            <input class="input-subject" name='subject' type="text" placeholder="subject" maxlength="29" required />
+            <br>
             <textarea clas"input-details" name='details' rows="4" cols="50"
                 placeholder="explain in detail ...."></textarea> <br>
             <select class="input-topic" name='topic'>
                 <option value="" disabled selected>topic</option>
+                <!--no more than 29 characters-->
                 <option>php</option>
                 <option>nodejs</option>
                 <option>sql</option>
@@ -48,6 +49,8 @@
         </form>
 
         {{> discussions}}
+        {{!-- <a class="previous-btn" href="/homepage/next/{{decrementPage currentpage}}"> Next</a>
+        <a class="next-btn" href="/homepage/next/{{incrementPage currentpage}}"> Next</a> --}}
     </div>
 
 
