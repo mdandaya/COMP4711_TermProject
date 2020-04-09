@@ -14,19 +14,17 @@
         </div>
     </div>
 
-    <div class="discussion-container">        
-        <form action='/msg/msgSend' method='post'>
+    <div class="discussion-container">            
             <div id="msgList-container">
                 {{> msgs }}
             </div>
             <div class='msgBox'>
-                <textarea name='content' placeholder='message details...'></textarea>
+                <textarea name='content' id='content' placeholder='message details...'></textarea>
             </div>
-            <input type='hidden' name='receiverID' value={{receiverID}} />
+            <input type='hidden' id='conversationid' name='convid'>            
             <div class='msgBox'>
-                <button type='submit'> Send </button>
-            </div>                                        
-        </form>                        
+                <button id='send'> Send </button>
+            </div>                                                
     </div>
 
 </div>

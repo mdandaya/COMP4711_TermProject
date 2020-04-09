@@ -6,5 +6,6 @@ router.get('/msgNew', msgController.msgNew);
 router.post('/msgSend', msgController.msgSend);
 router.get('/convList', msgController.convList);
 router.post('/msgList', msgController.msgList);
+router.post('/msgReply', msgController.msgReply);
 
 module.exports = router;

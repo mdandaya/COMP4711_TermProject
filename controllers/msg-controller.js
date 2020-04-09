@@ -32,6 +32,17 @@ exports.msgSend = async function(req,res,next) {
     res.redirect('../profile/' + user2);
 }
 
+exports.msgReply = async function (req, res, next) {
+    
+    var convid = req.body.convid;
+    var senderid = req.session.userID;
+    var content = req.body.content;
+
+    await model.createMessage(convid, senderid, content);
+    var msgs = await model.msgList(req.body.convid);
+    res.render('partials/msgs', {msgs: msgs.rows, layout: false});
+}
+
 exports.convList = async function(req,res,next) {
     var conversations = await model.conversationList(req.session.userID);
     var myConversations = [];
