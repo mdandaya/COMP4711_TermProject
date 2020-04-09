@@ -42,6 +42,11 @@ body {
     color: darkgray;
 }
 
+.discussion-container textarea {    
+    width: 70%;
+    margin: auto;
+}
+
 .convCard {
     width: 70%;
     margin: auto;
@@ -75,7 +80,7 @@ body {
 }
 
 .msgCard > img {
-    width: 30%;
+    width: 100px;
     border: solid white 3px;
     border-radius: 100%;
 }
@@ -85,3 +90,10 @@ body {
     padding-left: 5%;
     display: block;
 }
+
+.msgBox {
+    width: 70%;    
+    margin: 0 auto;
+    display: block;
+}
+

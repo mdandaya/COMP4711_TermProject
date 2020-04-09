@@ -28,7 +28,10 @@ function conversationList(myID) {
 }
 
 function msgList(convID) {
-    let sql = 'SELECT * FROM message WHERE convid = $1';
+    let sql = 'SELECT m.content, m.timestamp, u.firstname, u.lastname, u.url \
+    FROM message m \
+    JOIN users u ON m.senderid = u.id \
+    WHERE convid = $1';
     return db.query(sql, [convID]);
 }
 

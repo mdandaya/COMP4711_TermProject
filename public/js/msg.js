@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchMsgs(event) {
-    console.log(event.srcElement);
+
+    console.log(event.srcElement.id);
     fetch("msgList", {
         method: "post",
         headers: {
@@ -16,7 +17,7 @@ function fetchMsgs(event) {
         },
         body: JSON.stringify(
             {
-                convid: event.srcElement.id,
+                convid: event.srcElement.id
             }
         )
     }).then(response => response.text())
