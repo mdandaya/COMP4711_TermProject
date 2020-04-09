@@ -25,8 +25,8 @@ exports.getHomepage = async (req, res, next) => {
                 isDiscussion: function () { return true; }
             },
 
-            homepageCSS: true, discussions: data.rows       //TODO:fix this
-
+            homepageCSS: true, discussions: data.rows,       //TODO:fix this
+            user: user
         });
 
     }).catch(err => console.log(err));
