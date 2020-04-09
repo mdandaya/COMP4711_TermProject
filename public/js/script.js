@@ -1,14 +1,21 @@
 
 
+let currentpage = 0;
 
-function hell(){
-    console.log("im here");
+function previouspage() {
+    if (currentpage > 0) {
+        currentpage--;
+    }
+    console.log(currentpage);
+    let newpage = "/?page=" + currentpage;
+
+    window.location.href = newpage;
 }
 
-function previouspage(){
-    console.log("hi");
-}
+function nextpage() {
+    currentpage++;
+    console.log(currentpage);
+    let newpage = "/?page=" + currentpage;
 
-function nextpage(){
-
+    window.location.href = newpage
 }
