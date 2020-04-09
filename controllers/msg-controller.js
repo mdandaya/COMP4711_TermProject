@@ -1,18 +1,16 @@
 let model = require('../models/msg-model');
 var email = require('../util/email');
 
-exports.msgNew = function(req,res,next) {
+exports.msgNew = function(req,res,next) {    
     res.render('msgSend', { msgCSS: true, receiverID: req.query.receiverID });
 }
 
-exports.msgSend = async function(req,res,next) {
-    console.log("msgSend request:");
-    console.log(req.body);
+exports.msgSend = async function(req,res,next) {    
     
-    let subject = req.body.subject;
-    let content = req.body.content;
-    let user1 = req.session.userid;
-    let user2 = req.body.receiverID;
+    var subject = req.body.subject;
+    var content = req.body.content;
+    var user1 = req.session.userID;
+    var user2 = req.body.receiverID;
     
     // check the existance of the conversation
     var check;
@@ -21,9 +19,8 @@ exports.msgSend = async function(req,res,next) {
         if (check.rowCount == 0) {
             await model.createConversation(user1, user2, subject);
             check = await model.checkConversation(user1, user2, subject);            
-            let emailInfo = await model.getEmailInfo(check.rows[0].id);
-            console.log(emailInfo.rows[0].email, emailInfo.rows[0].firstname + " " + emailInfo.rows[0].lastname);
-            email.sendEmail('jesskim2613@gmail.com', 'subject');
+            let emailInfo = await model.getEmailInfo(check.rows[0].id);            
+            email.sendEmail(emailInfo.rows[0].email, emailInfo.rows[0].firstname + " " + emailInfo.rows[0].lastname);
         }
         await model.createMessage(check.rows[0].id, user1, content);
     } 
@@ -32,7 +29,7 @@ exports.msgSend = async function(req,res,next) {
     }
 
     // send user back to the counter-party's profile page
-    res.render('profile', { profileCSS: true });
+    res.redirect('../profile/' + user2);
 }
 
 exports.convList = async function(req,res,next) {
