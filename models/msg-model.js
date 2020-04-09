@@ -22,7 +22,7 @@ function conversationList(myID) {
     JOIN users u1 ON c.user1 = u1.id \
     JOIN users u2 ON c.user2 = u2.id \
     WHERE user1 = $1 OR user2 = $1';
-    return db.query(sql, myID);
+    return db.query(sql, [myID]);
 }
 
 function messageList(convID) {

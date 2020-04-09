@@ -31,10 +31,21 @@ exports.msgSend = async function(req,res,next) {
     res.render('profile', { profileCSS: true });
 }
 
-exports.convList = function(req,res,next) {
-    console.log(req.session);
-    var conversations = model.conversationList(req.session.userID);
-    res.render('msgList', { msgCSS: true, conversations: conversations.rows });
+exports.convList = async function(req,res,next) {
+    var conversations = await model.conversationList(req.session.userID);
+    console.log(conversations.rows);
+
+    var tempArray = [];
+
+    conversations.rows.forEach( function (row) {
+        if (req.session.firstname == row.u1first && req.session.lastname == row.u1last) {
+            tempArray.push({subject: row.subject, firstname: row.u1first, lastname: row.u1last});
+        } else {
+            tempArray.push({subject: row.subject, firstname: row.u2first, lastname: row.u2last});
+        }
+    });
+
+    res.render('msgList', { msgCSS: true, conversations: tempArray });
 }
 
 exports.msgList = function(req,res,next) {

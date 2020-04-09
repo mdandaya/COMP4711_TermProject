@@ -22,7 +22,6 @@ let routes = require('./routes/router');
 // let artistRoutes = require('./routes/artists');
 // let loginRoutes = require('./routes/login');
 // app.use(loginRoutes);
-app.use('/msg', msgRoutes);
 
 // app.use(loginRoute);
 //app.use(discussionsRoute);
@@ -44,6 +43,7 @@ app.use(
   discussionsRoutes,
   routes
 );
+app.use('/msg', msgRoutes);
 
 // Handlebars for view
 const expressHbs = require('express-handlebars');
