@@ -8,9 +8,18 @@ function getAllDiscussions(userid) {
                 LEFT JOIN discussionreply r ON (d.id = r.discussionid) 
                 LEFT JOIN users u ON (u.id = d.userid) 
                 where d.userid = `+ userid +
-        `group by d.userid, d.id, d.title, u.url, d.topic, d.body, d.dateposted;`;
+                `group by d.userid, d.id, d.title, u.url, d.topic, d.body, d.dateposted;`;
     return db.query(sql);
 }
+
+function getNumDiscussion(userid){
+    let sql = `select userid, COUNT(id) as numdiscuss 
+                from discussions 
+                where userid = ` + userid +
+                `group by userid;`;
+    return db.query(sql);
+}       
+
 
 function getOneDiscussion(discId) {
     // return db.query('Select * from discussions where id=' + discId);
@@ -20,7 +29,7 @@ function getOneDiscussion(discId) {
                 LEFT JOIN discussionreply r ON (d.id = r.discussionid) 
                 LEFT JOIN users u ON (u.id = d.userid) 
                 where d.id = `+ discId +
-        `group by d.userid, d.id, d.title, u.url, d.topic, d.body, d.dateposted;`;
+                `group by d.userid, d.id, d.title, u.url, d.topic, d.body, d.dateposted;`;
     return db.query(sql);
 }
 
@@ -54,7 +63,7 @@ module.exports = {
     addDisc: addDisc,
     getAllReplies: getAllReplies,
     getOneDiscussion: getOneDiscussion,
-    addReply, addReply
-
+    addReply: addReply,
+    getNumDiscussion: getNumDiscussion
 
 }
