@@ -1,4 +1,5 @@
 let model = require('../models/msg-model');
+var email = require('../util/email');
 
 exports.msgNew = function(req,res,next) {
     res.render('msgSend', { msgCSS: true, receiverID: req.body.receiverID });
@@ -18,8 +19,11 @@ exports.msgSend = async function(req,res,next) {
     try {
         check = await model.checkConversation(user1, user2, subject);
         if (check.rowCount == 0) {
-            await model.createConversation(user1, user2, subject)
-            check = await model.checkConversation(user1, user2, subject);
+            await model.createConversation(user1, user2, subject);
+            check = await model.checkConversation(user1, user2, subject);            
+            let emailInfo = await model.emailInfo(user1, user2);
+            console.log(emailInfo);
+            email.sendEmail('jesskim2613@gmail.com', 'subject');
         }
         await model.createMessage(check.rows[0].id, user1, content);
     } 
@@ -42,7 +46,7 @@ exports.convList = async function(req,res,next) {
             myConversations.push({convid: row.id, subject: row.subject, firstname: row.u2first, lastname: row.u2last, url: row.u2url});
         }
     });
-
+    
     res.render('msgList', { msgCSS: true, conversations: myConversations });
 }
 

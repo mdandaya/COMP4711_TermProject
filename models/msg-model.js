@@ -5,6 +5,14 @@ function checkConversation(user1, user2, subject) {
     return db.query(sql, [user1, user2, subject]);
 }
 
+function getEmailInfo(user1, user2) {
+    let sql = 'SELECT u1.firstname, u1.lastname, u2.email \
+    FROM users u1 \
+    JOIN users u2 on u2.id = $2 \
+    WHERE u1.user1 = $1';
+    return db.query(sql, [user1, user2]);
+}
+
 function createConversation(user1, user2, subject) {
     let sql = 'INSERT INTO conversation (user1, user2, subject) VALUES ($1, $2, $3)';
     db.query(sql, [user1, user2, subject]);
@@ -37,6 +45,7 @@ function msgList(convID) {
 
 module.exports = {
    checkConversation : checkConversation,
+   getEmailInfo: getEmailInfo,
    createConversation : createConversation,
    createMessage : createMessage,
    conversationList : conversationList,
