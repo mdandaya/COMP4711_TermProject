@@ -21,10 +21,7 @@ let profileRoutes = require('./routes/profile-routes');
 // let loginRoutes = require('./routes/login');
 // app.use(loginRoutes);
 app.use('/msg', msgRoutes);
-app.use(
-  homepageRoutes, 
-  profileRoutes
-);
+
 // app.use(loginRoute);
 //app.use(discussionsRoute);
 
@@ -37,6 +34,12 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
+
+app.use(
+  homepageRoutes, 
+  profileRoutes,
+  loginRoutes
+);
 
 // Handlebars for view
 const expressHbs = require('express-handlebars');

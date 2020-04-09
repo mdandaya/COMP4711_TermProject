@@ -7,7 +7,7 @@ function addUser(data) {
 }
 
 // Login
-function login(data) {
+function UserAuthAndRedirect(data) {
     //let sql = "SELECT CASE WHEN EXISTS (SELECT ID FROM users WHERE email = '" + data.email + "' AND password = '" + data.password + "') THEN 'Success' ELSE 'Email and Password do not match' END";    
     let sql = "SELECT ID FROM users WHERE email = '" + data.email + "' AND password = '" + data.password + "'";    
     return db.query(sql);
@@ -15,7 +15,7 @@ function login(data) {
 
 module.exports = {
     createUser : addUser,
-    login : login
+    login : UserAuthAndRedirect
     // ,getall : getAllPeople,
     // getpeople: getPeople 
 }
