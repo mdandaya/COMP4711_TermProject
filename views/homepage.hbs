@@ -2,24 +2,21 @@
 
     <div class='profile-container'>
         <img src="https://randomuser.me/api/portraits/med/men/1.jpg">
-        <h3>Man Manson</h3>
-        <p>man man guy guy who do thing thing</p>
+        <h3>{{user.firstname}} {{user.lastname}}</h3>
+        <p>{{user.about}}</p>
 
         <table>
             <tr>
                 <th>Posts</th>
-                <th>0</th>
-                {{!-- <th>{{user.posts}}</th> --}}
+                <th>{{user.posts}}</th>
             </tr>
             <tr>
                 <th>Messages</th>
-                <th>0</th>
-                {{!-- <th>user.messages</th> --}}
+                <th>{{user.messages}}</th>
             </tr>
             <tr>
                 <th>Likes</th>
-                <th>0</th>
-                {{!-- <th>{{user.likes}}</th> --}}
+                <th>{{user.likes}}</th>
             </tr>
         </table>
 
