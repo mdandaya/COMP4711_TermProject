@@ -21,10 +21,7 @@ let profileRoutes = require('./routes/profile-routes');
 // let loginRoutes = require('./routes/login');
 // app.use(loginRoutes);
 app.use('/msg', msgRoutes);
-app.use(
-  homepageRoutes, 
-  profileRoutes
-);
+
 // app.use(loginRoute);
 //app.use(discussionsRoute);
 
@@ -37,6 +34,12 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
+
+app.use(
+  homepageRoutes, 
+  profileRoutes,
+  loginRoutes
+);
 
 // Handlebars for view
 const expressHbs = require('express-handlebars');
@@ -70,11 +73,29 @@ app.get('/', function (req, res) {
     // this should be implemented in homepage controller render 
     // res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
 
-    res.redirect('/homepage');
+    //res.redirect('/homepage');
+    //res.render('homepage', { homepageCSS: true });
+    res.render('login', { loginCSS: true });
 });
 
+// app.post('/register', (req,res) => {
+
+//   //alert("test");
+//   console.log("does it go here or ?");
+
+//   // // // lets assume that our app has 2 users
+//   // // let users = ['user1','user2'];
+//   // let username = req.body.username;
+//   // let password = req.body.password;
+//   // // You will likely need to connect to connect to DB
+//   // // Check if username/password is valid
+//   // if(users.includes(username) && password=='password') {
+//   //   req.session.username = username;  // now on every request, username is made available
+//   //   req.session.cookie.maxAge = 60000; // set the expiry of session, in milliseconds = 1 min
+//   //   res.redirect('/peoples');
+//   // } else {
+//   //   res.redirect('/');
+//   // }
+// });
 
 app.listen(process.env.PORT || 4000, () => console.log('Server ready on environment variable port or 4000'))
-
-
-
