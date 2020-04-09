@@ -49,5 +49,5 @@ exports.convList = async function(req,res,next) {
 exports.msgList = async function(req,res,next) {
     var msgs = await model.msgList(req.body.convid);
     console.log(msgs.rows);
-    return msgs.rows;
+    res.render('partials/msgs', {msgs: msgs.rows, layout: false});
 }

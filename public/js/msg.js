@@ -19,6 +19,9 @@ function fetchMsgs(event) {
                 convid: event.srcElement.id,
             }
         )
-    });
+    }).then(response => response.text())
+    .then( function (textResponse) {    
+        document.getElementById('msgList-container').innerHTML = textResponse;
+    })
 }
 
