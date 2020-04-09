@@ -1,0 +1,58 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    color: rgb(151, 151, 151);
+}
+
+.card {
+    width: 410px;
+    height: 95px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    background-color: white;
+}
+
+.photo {
+    justify-content: flex-start;
+    margin: 10px;
+    float: left;
+    border-radius: 50%;
+    border: 3px;
+}
+
+.title {
+    display: inline;
+    margin-left: 15px;
+}
+
+.topic {
+    width: 75px;
+    float: right;
+    border: 3px solid lightblue;
+    font-size: 12px;
+}
+
+.body {
+    margin: 7px 0 7px -5px;
+    height: 85px;
+    width: 100%;
+    font-size: 14px;
+    word-wrap: break-word;
+    padding-right: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.content {
+    margin-top: 10px;
+    width: 280px;
+    float: right;
+}
+
+.date {
+    text-indent: 5px;
+    display: inline;
+    font-size: 12px;
+}
+.replies {
+    float: right;
+}

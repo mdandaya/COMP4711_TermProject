@@ -1,0 +1,28 @@
+<div class='main-container'>
+
+    <div class="profile-container">
+        <div class="profile">
+            <img src="https://randomuser.me/api/portraits/med/men/1.jpg">
+            <h1>Man Manson</h1>
+            <p>Description of user</p>
+            <p>Country</p>
+            
+            {{!-- <img src={{user.imageUrl}}>
+            <h1>{{user.name}</h1>
+            <p>{{user.description}}</p>
+            <p>{{user.Country}}</p> --}}
+        </div>
+        <div class="profile-buttons">
+            <form action="/homepage" method="get">
+                <input type="submit" value="message">
+            </form>
+            <span>{{profile.likes}} Likes<button>+</button></span>
+            <span>{{profile.posts}} Posts</span>
+        </div>
+
+    </div>
+
+    <div class='discussion-container'>
+        {{>discussions}}
+    </div>
+</div>

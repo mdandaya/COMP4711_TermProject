@@ -5,18 +5,28 @@
     <meta charset="UTF-8">
     <title>KnowledgeBase</title>
     <link href='/css/main-layout.css' rel='stylesheet' />
-    
+
+    {{#if loginCSS}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href='/css/loginCSS.css' rel='stylesheet'/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    {{/if}}
+
     {{!-- <link href='/css/login.css' rel='stylesheet' /> --}}
     {{#if homepageCSS}}
-    <link href='/css/homepage.css' rel='stylesheet'/>
-    <link href="/css/navbar.css" rel='stylesheet' />
-    
+    <link href='/css/homepage.css' rel='stylesheet' />
+
+    {{/if}}
+    {{#if profileCSS}}
+    <link href='/css/profile.css' rel='stylesheet' />
+
     {{/if}}
 
     <!--#if profileCSS link navbar.css-->
 
     {{#if discussionsCSS}}
     <link href='/css/discussions.css' rel='stylesheet' />
+    <script src="../../public/js/discussions.js"></script>
     {{/if}}
     {{!-- {{#if artistsJS}}
         <script src='/js/script.js'></script>
@@ -30,6 +40,9 @@
 </head>
 
 <body>
+    {{#unless noNavigation}}
+        {{> navBar }}
+    {{/unless}}
     {{{ body }}}
 </body>
 
