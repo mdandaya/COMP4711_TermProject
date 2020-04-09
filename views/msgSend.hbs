@@ -11,8 +11,7 @@
         <form action='/msg/msgSend' method='post'>
             <input type='text' name='subject' placeholder='subject' />
             <textarea name='content' placeholder='message details...'></textarea>
-            <input type='text' name='senderID' placeholder='sender id for test' />
-            <input type='text' name='receiverID' placeholder='receiver id for test' />
+            <input type='hidden' name='receiverID' value={{receiverID}} />
             <button type='submit'> Test </button>
         </form>
     </div>

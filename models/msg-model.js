@@ -5,14 +5,15 @@ function checkConversation(user1, user2, subject) {
     return db.query(sql, [user1, user2, subject]);
 }
 
-function createConversation(user1, user2, subject, message) {
+function createConversation(user1, user2, subject) {
     let sql = 'INSERT INTO conversation (user1, user2, subject) VALUES ($1, $2, $3)';
     db.query(sql, [user1, user2, subject]);
 }
 
-function createMessage(id, content) {
-    let sql = 'INSERT INTO message (convid, content, timestamp) values ($1, $2, current_timestamp)';
-    db.query(sql, [id, content]);
+function createMessage(id, senderid, content) {
+    let sql = 'INSERT INTO message (convid, senderid, content, timestamp) \
+    values ($1, $2, $3, current_timestamp)';
+    db.query(sql, [id, senderid, content]);
 }
 
 function conversationList(myID) {

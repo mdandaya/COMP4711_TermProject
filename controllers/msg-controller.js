@@ -1,7 +1,7 @@
 let model = require('../models/msg-model');
 
 exports.msgNew = function(req,res,next) {
-    res.render('msgSend', { msgCSS: true });
+    res.render('msgSend', { msgCSS: true, receiverID: req.body.receiverID });
 }
 
 exports.msgSend = async function(req,res,next) {
@@ -11,7 +11,7 @@ exports.msgSend = async function(req,res,next) {
     let subject = req.body.subject;
     let content = req.body.content;
     let user1 = req.session.userid;
-    let user2 = req.params.userid;
+    let user2 = req.body.receiverID;
     
     // check the existance of the conversation
     var check;
@@ -21,7 +21,7 @@ exports.msgSend = async function(req,res,next) {
             await model.createConversation(user1, user2, subject)
             check = await model.checkConversation(user1, user2, subject);
         }
-        await model.createMessage(check.rows[0].id, content);
+        await model.createMessage(check.rows[0].id, user1, content);
     } 
     catch (error) {
         console.log(error);

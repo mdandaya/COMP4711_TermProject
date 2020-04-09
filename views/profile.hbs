@@ -15,6 +15,7 @@
         <div class="profile-buttons">
             <form action="/msg/msgnew" method="get">
                 <input type="submit" value="message">
+                <input type='hidden' name='receiverID' value={{receiverID}}>
             </form>
             <span>{{profile.likes}} Likes<button>+</button></span>
             <span>{{profile.posts}} Posts</span>
