@@ -8,7 +8,7 @@ exports.getHomepage = async (req, res, next) => {
     let userRow = await profileModel.getUserData(userId);
     let user = userRow.rows[0];
     console.log(user);
-    
+
 
     
     data.then(data => {
@@ -51,14 +51,14 @@ exports.postToTimeLine = async (req, res, next) => {
     // }
 
     let disc = {
-        userID: 2,
+        userID: req.session.userID,
         title: req.body.subject,
         body: req.body.details,
         topic: req.body.topic
     }
 
     await discModel.addDisc(disc);
-    res.redirect(301, '/');
+    res.redirect(301, '/homepage');
 }
 
 function helperPagination(arr, size) {
