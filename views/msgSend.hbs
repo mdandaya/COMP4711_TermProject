@@ -9,9 +9,11 @@
 
     <div class="discussion-container">
         <form action='/msg/msgSend' method='post'>
-            <input type='text' id='subject' placeholder='subject' />
-            <input type='text' id='content' placeholder='message details...' />
-            <input type='submit' id='submit' value='Message' />
+            <input type='text' name='subject' placeholder='subject' />
+            <textarea name='content' placeholder='message details...'></textarea>
+            <input type='text' name='senderID' placeholder='sender id for test' />
+            <input type='text' name='receiverID' placeholder='receiver id for test' />
+            <button type='submit'> Test </button>
         </form>
     </div>
 

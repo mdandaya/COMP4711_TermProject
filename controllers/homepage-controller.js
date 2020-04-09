@@ -1,9 +1,14 @@
 let discModel = require('../models/discData');
+let profileModel = require('../models/profile');
 
 exports.getHomepage = async (req, res, next) => {
 
     let userId = req.session.userID;
     let data = discModel.getAllDiscussions(userId);
+    let userRow = await profileModel.getUserData(userId);
+    let user = userRow.rows[0];
+    console.log(user);
+    
 
     
     data.then(data => {
@@ -19,7 +24,9 @@ exports.getHomepage = async (req, res, next) => {
                 decrementPage: function (page) { return ++page; },
                 isDiscussion: function () { return true; }
             },
+
             homepageCSS: true, discussions: data.rows       //TODO:fix this
+
         });
 
     }).catch(err => console.log(err));
@@ -50,7 +57,7 @@ exports.postToTimeLine = async (req, res, next) => {
         topic: req.body.topic
     }
 
-    await discussionModel.addDisc(disc);
+    await discModel.addDisc(disc);
     res.redirect(301, '/');
 }
 
