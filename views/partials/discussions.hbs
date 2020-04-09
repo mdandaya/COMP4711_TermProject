@@ -6,10 +6,10 @@
         <div class="topic">{{this.topic}}</div>
         <div class="content">
             <p class="body">{{this.body}}</p>
-            {{#unless replyView}}
-            <div class="date" >{{this.dateposted}}</div><!--TODO: trim date. could use string.slice(4, 15);-->
-            <a class="replies" href="/discussions/replies/{{this.id}}">{{numberOfReplies}} replies</a>
-            {{/unless}}
+            {{!-- {{#if isDiscussion}} --}}
+            <div class="date" >{{dateTrim this.dateposted}}</div>
+            <a class="replies" href="/discussions/replies/{{this.userid}}/{{this.id}}">{{numberOfReplies}} replies</a>
+            {{!-- {{/if}} --}}
         </div>
         <!--TODO:get number of replies. could use js file?  -->
     </div>

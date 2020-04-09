@@ -1,12 +1,12 @@
-{{>navbar}}
-
-{{discussion}}
+{{>discussions}}
 <div class="reply-list">
     {{#each replies}}
-    <div class="card">
-        <img class="photo" src="https://randomuser.me/api/portraits/med/women/2.jpg" alt="p1">
-        <!--TODO: replace photo with real user id-->
-        <p class="body">{{this.body}}</p>
+    <div class="reply-container">
+        <div class="card">
+            <img class="photo" src="https://randomuser.me/api/portraits/med/women/2.jpg" alt="p1">
+            <!--TODO: replace photo with real user id-->
+            <p class="body">{{this.body}}</p>
+        </div>
     </div>
     {{/each}}
 </div>

@@ -17,6 +17,7 @@ let discussionsRoutes = require('./routes/discussions-routes');
 let msgRoutes = require('./routes/msg-routes');
 let homepageRoutes = require('./routes/homepage-routes');
 let profileRoutes = require('./routes/profile-routes');
+let routes = require('./routes/router');
 // TODO: Add routes here like this
 // let artistRoutes = require('./routes/artists');
 // let loginRoutes = require('./routes/login');
@@ -39,7 +40,9 @@ app.use(session({
 app.use(
   homepageRoutes, 
   profileRoutes,
-  loginRoutes
+  loginRoutes,
+  discussionsRoutes,
+  routes
 );
 
 // Handlebars for view
@@ -49,50 +52,18 @@ app.engine(
   expressHbs({
     layoutsDir: 'views/layouts/',
     defaultLayout: 'main-layout',
-    extname: 'hbs'
+    extname: 'hbs',
+    // helpers: ''
   })
 );
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(function(req, res, next) {
-//   res.setHeader("Content-Security-Policy", "default-src 'self'");
-//   return next();
-// });
-// Default path
+
 app.get('/', function (req, res) {
 // TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
-//   let user = req.session.user;
-//   // user = null;
-//   console.log('index' + user);
-//   if (!user) {
-//     return res.render('login');
-//   }
-//   res.redirect(301, '/artists');
 
-//TODO: get user id and pass it
-
-<<<<<<< HEAD
-  // let discussions = discModel.getAllDiscussions(userid);
-    // this should be implemented in homepage controller render 
-    // res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
-=======
-//fetch test data==================
-  let data = discModel.getAllDiscussions(7);
-  //let numberOfReplies = discController.getNumOfReplies(); TODO: number of reply UNDEFINED
-  data.then(data => {
-    console.log(data.rows.length, "---data");
-    res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows, numberOfReplies: data.rows.length});
-    
-}).catch(err => console.log(err));
-//=================================
-
-});
->>>>>>> add reply view, have to fix
-
-    //res.redirect('/homepage');
-    //res.render('homepage', { homepageCSS: true });
     res.render('login', { loginCSS: true });
 });
 
