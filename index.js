@@ -19,7 +19,6 @@ let homepageRoutes = require('./routes/homepage-routes');
 let profileRoutes = require('./routes/profile-routes');
 let routes = require('./routes/router');
 // TODO: Add routes here like this
-// let artistRoutes = require('./routes/artists');
 // let loginRoutes = require('./routes/login');
 // app.use(loginRoutes);
 app.use('/msg', msgRoutes);

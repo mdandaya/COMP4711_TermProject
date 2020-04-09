@@ -1,9 +1,22 @@
 let db = require('../util/database');
 
 // Add a single individual to the database
+function checkForUserEmail(data) {
+    let sql = "SELECT id FROM users WHERE email = '" + data.email + "'";  
+    return db.query(sql);
+}
+
+// Add a single individual to the database
 function addUser(data) {
-    let sql = "INSERT INTO users (firstName, lastName, email, password) VALUES ('" + data.fname + "','"+ data.lname+ "','" + data.email + "','"+ data.password + "')";
-    db.query(sql);
+    console.log(Math.ceil(Math.random() * 2))
+    let randURL = "";
+    if (Math.ceil(Math.random() * 2) == 1 ) {
+        randURL = "https://randomuser.me/api/portraits/men/" + Math.ceil(Math.random() * 75) + ".jpg";
+    } else {
+        randURL = "https://randomuser.me/api/portraits/women/" + Math.ceil(Math.random() * 75) + ".jpg";
+    }
+    let sql_insert = "INSERT INTO users (firstName, lastName, email, password, url) SELECT '" + data.fname + "','"+ data.lname+ "','" + data.email + "','"+ data.password + "','"+ randURL + "' WHERE NOT EXISTS (SELECT * FROM users WHERE email = '" + data.email + "')";
+    return db.query(sql_insert);
 }
 
 // Login
@@ -29,10 +42,9 @@ function addLike(userId) {
 }
 
 module.exports = {
-    createUser: addUser,
-    login: UserAuthAndRedirect,
+    createUser : addUser,
+    login : UserAuthAndRedirect,
+    checkIfUserExists : checkForUserEmail,
     getUserData: getUserData,
     addLike: addLike
-    // ,getall : getAllPeople,
-    // getpeople: getPeople 
 }
