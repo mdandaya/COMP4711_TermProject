@@ -4,11 +4,22 @@ let profileModel = require('../models/profile');
 exports.getHomepage = async (req, res, next) => {
 
     let userId = req.session.userID;
+    let discSize = req.session.numDiscussions;
+    let numDisc = await discModel.getNumDiscussion(userId);
+
+
+
     let data = discModel.getAllDiscussions(userId);
     let userRow = await profileModel.getUserData(userId);
     let user = userRow.rows[0];
     console.log(user);
-    
+  
+    let currentPage = req.params.page > 0 ? req.params.page : 0;
+    let newarr = [];
+    newarr.push(currentPage);
+    newarr.push(numDisc.rows);
+    console.log("newarr====", newarr);
+  
     data.then(data => {
         let paginationArr = helperPagination(data.rows, 5);
 
@@ -18,13 +29,15 @@ exports.getHomepage = async (req, res, next) => {
                 dateTrim: function (date) {
                     return date.toString().slice(4, 15);
                 },
-                incrementPage: function (page) { return --page; },
-                decrementPage: function (page) { return ++page; },
-                isDiscussion: function () { return true; }
+                getDiscNum: function (newarr) {
+                    return newarr;
+                }
+
+                // isDiscussion: function () { return true; }
             },
 
-            homepageCSS: true, discussions: data.rows,       //TODO:fix this
-            user: user
+            homepageCSS: true, discussions: data.rows      //TODO:fix this
+
         });
 
     }).catch(err => console.log(err));
