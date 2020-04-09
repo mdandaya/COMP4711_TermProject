@@ -16,21 +16,39 @@ exports.register = (req, res) => {
     const user = req.body;
     if(req.body.password === req.body.confirm_pass) {
         profileModel.createUser(user)
-    //         .then(()=> {
-    //             //create user in db and login in right away to set req.session.userId
-    //             profile.addUser(user)
-    //                 .then(([data, fieldData]) => {
-    //                     if (data[0] && data[0][0] && data[0][0].ID) {
-    //                         req.session.userId = data[0][0].ID
-    //                     }
-    //                     res.redirect(301, `/profile`);
-    //                 })
-    //         })
-    //         .catch((err)=>{
-    //             console.log(err)
-    //             res.redirect(403, '/');
-    //         })
+            .then(()=> {
+                //create user in db and login in right away to set req.session.userId
+                profile.addUser(user)
+                    .then(([data, fieldData]) => {
+                        if (data[0] && data[0][0] && data[0][0].ID) {
+                            req.session.userId = data[0][0].ID
+                        }
+                        res.redirect(301, `/profile`);
+                    })
+            })
+            .catch((err)=>{
+                console.log(err)
+                res.redirect(403, '/');
+            })
     } else {
         res.render('login', { err: "Credentials do not match database"})
     }
+}
+
+//from POST /register.  Create user, login, set session id
+exports.login = (req, res, next) => {
+    console.log("TEST");
+    profileModel.login(req.body).then((data) => {
+        console.log(data.rows[0].id);
+        if (data.rows[0]) {
+            req.session.userId = data.rows[0].id;
+            res.redirect('/homepage');
+        } else {
+            console.log("ERROR");
+            res.render('login', {layout: 'signUp', err: 'Wrong password or email'})
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 }

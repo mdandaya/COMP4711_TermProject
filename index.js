@@ -70,7 +70,9 @@ app.get('/', function (req, res) {
     // this should be implemented in homepage controller render 
     // res.render('homepage', { homepageCSS: true, discussionsCSS: true, discussions: data.rows });
 
-    res.redirect('/homepage');
+    //res.redirect('/homepage');
+    //res.render('homepage', { homepageCSS: true });
+    res.render('login', { loginCSS: true });
 });
 
 // app.post('/register', (req,res) => {
