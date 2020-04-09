@@ -46,3 +46,31 @@ body {
     flex: 1 1 750px;
     color: darkgray;
 }
+
+.previous-btn{
+    width: 100px;
+    float: left;
+    margin: 10px;
+    
+    background-color: #38a1f3;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    border: none;
+    height: 30px;
+}
+
+.next-btn{
+    width: 100px;
+    float: right;
+    margin: 10px;
+    
+    background-color: #38a1f3;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    border: none;
+    height: 30px;
+}

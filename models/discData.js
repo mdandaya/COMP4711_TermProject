@@ -1,12 +1,5 @@
 let db = require('../util/database');
 
-// SELECT u.userID, u.image, p.postID, p.subject, p.detail, p.topic, p.date, COUNT(c.postID) AS replies
-//         FROM post p
-//         LEFT JOIN comment c ON p.postID = c.postID
-//         LEFT JOIN user u ON p.userID = u.userID
-//         WHERE p.userID = '${id}'
-//         GROUP BY postID
-//         ORDER BY p.date DESC
 
 function getAllDiscussions(userid) {
     // return db.query('Select * from discussions where userid='+userid);
@@ -49,10 +42,6 @@ function getAllReplies(userId, discId) { //userid: different users for replies. 
 }
 
 function addReply(userId, discId, content) {
-
-    console.log("===========",userId);
-    console.log(discId);
-    console.log(content);
     return db.query(
         `INSERT INTO discussionreply
         (userid, discussionid, body)

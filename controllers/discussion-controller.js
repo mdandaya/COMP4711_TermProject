@@ -32,9 +32,9 @@ exports.postNewReply = async (req, res) => {
     let userId = req.session.userID;
     let discId = req.params.discussionId;
     let content = req.body.newReply;
-    console.log("content..: ",content);
+  
     try {
-        console.log("please work ");
+      
         let success = await discData.addReply(userId, discId, content);
         console.log(success);
         res.redirect(301, '/discussions/replies/' + userId + '/' + discId);

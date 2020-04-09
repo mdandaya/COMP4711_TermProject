@@ -82,6 +82,7 @@
 }
 
 .btn{
+    width: 100px;
     float: right;
     margin: 10px;
     margin-right: 50px;
