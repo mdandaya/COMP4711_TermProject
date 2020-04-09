@@ -15,7 +15,7 @@ body {
     padding: auto;
     min-width: 500px;
     margin: auto;
-    background-color: purple;
+    /* background-color: purple; */
     display: flex;
     justify-content: center;
     padding: 10px;
