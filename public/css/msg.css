@@ -41,3 +41,47 @@ body {
     flex: 1 1 750px;
     color: darkgray;
 }
+
+.convCard {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-color: lightgray;
+    padding: 1%;
+}
+
+.convCard > img {
+    width: 30%;
+    border: solid white 3px;
+    border-radius: 100%;
+}
+
+.convCard > span {
+    width: 50%;
+    padding-left: 5%;
+    display: block;
+}
+
+.msgCard {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-color: lightgray;
+    padding: 1%;
+}
+
+.msgCard > img {
+    width: 30%;
+    border: solid white 3px;
+    border-radius: 100%;
+}
+
+.msgCard > span {
+    width: 50%;
+    padding-left: 5%;
+    display: block;
+}

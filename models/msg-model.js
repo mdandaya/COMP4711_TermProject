@@ -17,8 +17,9 @@ function createMessage(id, senderid, content) {
 }
 
 function conversationList(myID) {
-    let sql = 'SELECT c.id, c.subject, u1.firstname as u1first, u1.lastname as u1last, \
-    u2.firstname as u2first, u2.lastname as u2last \
+    let sql = 'SELECT c.id, c.subject, \
+    u1.firstname as u1first, u1.lastname as u1last, u1.url as u1url,\
+    u2.firstname as u2first, u2.lastname as u2last, u2.url as u2url \
     FROM conversation c \
     JOIN users u1 ON c.user1 = u1.id \
     JOIN users u2 ON c.user2 = u2.id \

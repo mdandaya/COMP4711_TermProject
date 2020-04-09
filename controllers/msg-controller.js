@@ -37,9 +37,9 @@ exports.convList = async function(req,res,next) {
 
     conversations.rows.forEach(function (row) {
         if (req.session.firstname == row.u1first && req.session.lastname == row.u1last) {
-            myConversations.push({convid: row.id, subject: row.subject, firstname: row.u1first, lastname: row.u1last});
+            myConversations.push({convid: row.id, subject: row.subject, firstname: row.u1first, lastname: row.u1last, url: row.u1url});
         } else {
-            myConversations.push({convid: row.id, subject: row.subject, firstname: row.u2first, lastname: row.u2last});
+            myConversations.push({convid: row.id, subject: row.subject, firstname: row.u2first, lastname: row.u2last, url: row.u2url});
         }
     });
 
