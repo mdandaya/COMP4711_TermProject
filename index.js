@@ -63,7 +63,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res) {
 // TODO: USE EXPRESS SESSION HERE TO SAVE SESSION LIKE THIS
 
-    res.render('login', { loginCSS: true });
+    res.render('login', { loginCSS: true , noNavigation: true});
 });
 
 // app.post('/register', (req,res) => {
