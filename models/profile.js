@@ -23,10 +23,16 @@ function getUserData(userId) {
     return db.query(sql);
 }
 
+function addLike(userId) {
+    let sql = "Update users set likes = likes + 1 where id = " + userId;
+    return db.query(sql);
+}
+
 module.exports = {
     createUser: addUser,
     login: UserAuthAndRedirect,
-    getUserData: getUserData
+    getUserData: getUserData,
+    addLike: addLike
     // ,getall : getAllPeople,
     // getpeople: getPeople 
 }

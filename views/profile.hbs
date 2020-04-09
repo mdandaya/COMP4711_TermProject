@@ -2,21 +2,22 @@
 
     <div class="profile-container">
         <div class="profile">
-            <img src="https://randomuser.me/api/portraits/med/men/1.jpg">
-            <h1>Man Manson</h1>
-            <p>Description of user</p>
-            <p>Country</p>
-            
-            {{!-- <img src={{user.imageUrl}}>
-            <h1>{{user.name}</h1>
-            <p>{{user.description}}</p>
-            <p>{{user.Country}}</p> --}}
+            <img src={{profile.url}}>
+            <h1>{{profile.firstname}} {{profile.lastname}}</h1>
+            <p>{{profile.about}}</p>
+            <p>{{profile.country}}</p>
         </div>
         <div class="profile-buttons">
-            <form action="/homepage" method="get">
+            <form action="/" method="get">
                 <input type="submit" value="message">
             </form>
-            <span>{{profile.likes}} Likes<button>+</button></span>
+
+            <span>{{profile.likes}} Likes
+                <form action="/profile/{{profile.id}}/like"  method="post">
+                    <input type="submit" value="+">
+                </form>
+            </span>
+
             <span>{{profile.posts}} Posts</span>
         </div>
 
