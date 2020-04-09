@@ -6,4 +6,8 @@ router.get('/homepage', homepageController.getHomepage);
 
 router.post('/homepage/post', homepageController.postToTimeLine);
 
+router.get('/homepage/editprofile', homepageController.getEditProfile);
+
+router.post('/homepage/editprofile', homepageController.postEditProfile);
+
 module.exports = router;
