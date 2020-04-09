@@ -26,8 +26,6 @@ exports.getAllreplies = async (req, res) => {//TODO:
 
 };
 
-
-
 exports.postNewReply = async (req, res) => {
     let userId = req.session.userID;
     let discId = req.params.discussionId;
