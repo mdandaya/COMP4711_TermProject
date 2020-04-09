@@ -7,8 +7,6 @@ exports.getHomepage = async (req, res, next) => {
     let discSize = req.session.numDiscussions;
     let numDisc = await discModel.getNumDiscussion(userId);
 
-
-
     let data = discModel.getAllDiscussions(userId);
     let userRow = await profileModel.getUserData(userId);
     let user = userRow.rows[0];
@@ -36,8 +34,8 @@ exports.getHomepage = async (req, res, next) => {
                 // isDiscussion: function () { return true; }
             },
 
-            homepageCSS: true, discussions: data.rows      //TODO:fix this
-
+            homepageCSS: true, discussions: data.rows,      //TODO:fix this
+            user: user
         });
 
     }).catch(err => console.log(err));
