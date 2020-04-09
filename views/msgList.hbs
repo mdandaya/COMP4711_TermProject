@@ -4,7 +4,12 @@
 
     <div class='profile-container'>
         <div id='convList-container'>
-            <p> hello conv list </p>
+            {{#each discussions}}
+                <div class="card">
+                    <img class="photo" src={{this.url}} alt="p1">
+                    <h3 class="title">{{this.title}}</h3>
+                </div>
+            {{/each}}
         </div>
     </div>
 
