@@ -1,7 +1,9 @@
 {{#each msgs}}
     <div class="msgCard">
-        <p> {{this.content}} </p>
-        <p> {{this.timestamp}} </p>
-        <p> {{this.senderid}} </p>
+        <img src={{this.url}} alt='Missing Image'/>
+        <span>
+            <p> {{this.firstname}} {{this.lastname}} {{this.timestamp}} </p>
+            <p> {{this.content}} </p>                                                            
+        </span>    
     </div>
 {{/each}}
