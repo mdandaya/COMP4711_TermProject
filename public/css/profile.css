@@ -3,7 +3,7 @@ body {
 }
 
 .main-container {
-    background-color: #87ceeb;
+    /* background-color: #87ceeb; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -24,7 +24,7 @@ body {
 
 .profile {
     width: 100%;
-    background-color: pink;
+    /* background-color: pink; */
     text-align: left;
 }
 
@@ -35,12 +35,12 @@ body {
 }
 
 .profile-buttons {
-    background-color: orange;
+    /* background-color: orange; */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .discussion-container {
-    background-color: green ;
+    /* background-color: green ; */
 }
