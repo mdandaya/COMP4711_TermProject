@@ -14,9 +14,9 @@ const profileModel = require('../models/profile');
 //from POST /register.  Create user, login, set session id
 exports.register = (req, res) => {
     const user = req.body;
-    if(req.body.password === req.body.confirm_pass) {
+    if (req.body.password === req.body.confirm_pass) {
         profileModel.createUser(user)
-            .then(()=> {
+            .then(() => {
                 //create user in db and login in right away to set req.session.userId
                 profile.addUser(user)
                     .then(([data, fieldData]) => {
@@ -26,12 +26,12 @@ exports.register = (req, res) => {
                         res.redirect(301, `/profile`);
                     })
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err)
                 res.redirect(403, '/');
             })
     } else {
-        res.render('login', { err: "Credentials do not match database"})
+        res.render('login', { err: "Credentials do not match database" })
     }
 }
 
@@ -43,10 +43,18 @@ exports.login = (req, res, next) => {
             res.redirect('/homepage');
         } else {
             console.log("ERROR");
-            res.render('login', {layout: 'signUp', err: 'Wrong password or email'})
+            res.render('login', { layout: 'signUp', err: 'Wrong password or email' })
         }
     })
-    .catch((err) => {
-        console.log(err)
-    })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+exports.logout = (req, res) => {
+    req.session.destroy(err => {
+        if (err) return console.log(err);
+    });
+    req.session = null;
+    res.redirect(301, '/');
 }
